@@ -1,7 +1,7 @@
 # MyActions
 自己用来签到的东东,不支持售后
 
-更新时间:2020-8-27 18:34:10
+更新时间:2020-8-31 18:35:00
 
 ##
 目前已支持[@NobyDa](https://github.com/NobyDa) 以及[@lxk0301](https://github.com/lxk0301) 中京东签到的内容,优点是支持无限数量的京东cookie
@@ -18,7 +18,49 @@
 
 目前已配置好自动执行时间，到了指定时间会执行，并且看到workflow
 
+### Secrets全集合
 
+#### `JD_COOKIE`
+
+> 【必须】京东Cookie，必须有这个，否则全部不执行
+
+多个账号间用&隔开，支持无数个账号签到
+
+#### `PUSH_KEY` 
+
+> 【可选】[server酱的微信通知](http://sc.ftqq.com/3.version)服务
+
+用于推送Cookie失效通知，同时用于推送京东农场兑换礼物通知等
+
+#### `BARK_PUSH`
+
+> 【可选】BARK这个手机APP的推送 https://t.me/jdfruit/80
+
+在settings->secrets->new secret里面Name填写BARK_PUSH，Value填写app提供的token
+
+(注：此token是https://api.day.app/后面的内容)
+
+#### `FruitShareCodes` 
+
+> 【可选】京东农场分享码
+
+```javascript
+// 同一个京东账号的好友互助码用@符号隔开,不同京东账号之间按Cookie隔开方法,即用&符号隔开,下面给一个示例
+// 如: 京东账号1的shareCode1@京东账号1的shareCode2&京东账号2的shareCode1@京东账号2的shareCode2
+0a74407df5df4fa99672a037eec61f7e@dbb21614667246fabcfd9685b6f448f3@6fbd26cc27ac44d6a7fed34092453f77@61ff5c624949454aa88561f2cd721bf6&6fbd26cc27ac44d6a7fed34092453f77@61ff5c624949454aa88561f2cd721bf6
+```
+
+#### `JDMarketCoinToBeans`
+
+> 【可选】京小超蓝币换京东个数,请填入纯数字,并且在0~20之间
+
+如果值超出范围会直接使用0,不用担心脚本无法正常执行
+
+#### `JDJoyFeedCount`
+
+> 【可选】宠汪汪喂食数量，请填写[10,20,40,80]其中任意一个
+
+如果值超出范围会直接使用10,不用担心脚本无法正常执行
 
 ### Cookie获取和配置
 
@@ -35,14 +77,6 @@ pt_pin=***;
 我有两个京东账号,则我JD_COOKIE里面要填写的内容为
 pt_key=****;pt_pin=***;&pt_key=****;pt_pin=***;
 ```
-
-### Cookie失效通知
-
-目前已接入[@lxk0301](https://github.com/lxk0301)大佬写好的失效通知
-
-可自行接入[server酱的微信通知](http://sc.ftqq.com/3.version)服务
-
-server酱的推送通知服务, 是可选项, 如果需要 自行申请SCKEY,再填入Secrets里面(Name选项输入 `PUSH_KEY` ,Value选项输入申请的 SCKEY)
 
 ### fork后如何同步代码
 

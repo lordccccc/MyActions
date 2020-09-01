@@ -26,8 +26,10 @@ jobs:
                   npm install
             - name: "运行 【京东农场】"
               run: |
-                  node lxk0301_old.js
+                  node lxk0301.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   PUSH_KEY: ${{ secrets.PUSH_KEY }}
+                  BARK_PUSH: ${{ secrets.BARK_PUSH }}
+                  FruitShareCodes: ${{ secrets.FruitShareCodes }}
                   SYNCURL: https://github.com/lxk0301/scripts/raw/master/jd_fruit.js
