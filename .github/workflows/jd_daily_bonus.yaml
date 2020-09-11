@@ -1,6 +1,8 @@
 name: 京东每日签到
 
 on:
+    push:
+    branches: [ master ]
     # push:
     #     branches:
     #         - master
